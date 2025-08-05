@@ -1,0 +1,2 @@
+_target_: src.utils.VoidScheduler
+_partial_: true

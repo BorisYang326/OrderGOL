@@ -1,0 +1,4 @@
+_target_: src.utils.LinearScheduler
+_partial_: true
+max_epochs: ${trainer.max_epochs}
+

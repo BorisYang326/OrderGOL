@@ -1,0 +1,35 @@
+defaults:
+  - dataset: crello-10k-corrv3
+  - data: default
+  - model: layout_transformer
+  - scorer: default
+  - trainer: default
+  - model_scheduler: void
+  - scorer_scheduler: void
+  - optimizer: adamw
+  - _self_
+
+device: cuda
+seed: null
+
+hydra:
+  sweep:
+    dir: multirun/${now:%Y-%m-%d}/${now:%H-%M-%S}
+    subdir: ${hydra.job.override_dirname}
+  job_logging:
+    root:
+      handlers: [console, file]
+      level: DEBUG  # Set the global level to DEBUG to capture all logs
+    handlers:
+      console:
+        class: logging.StreamHandler
+        level: INFO
+        formatter: simple
+      file:
+        class: logging.FileHandler
+        level: DEBUG
+        formatter: simple
+        filename: main.log
+    formatters:
+      simple:
+        format: '[%(asctime)s][%(name)s][%(levelname)s] - %(message)s'

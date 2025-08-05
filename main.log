@@ -1,0 +1,19 @@
+[2025-08-05 22:30:33,918][src][WARNING] - Please set PUBLIC_PATH in config.py
+[2025-08-05 22:30:33,918][src][WARNING] - Please set IS_WANDB_CONNECTED flag manually.
+[2025-08-05 22:30:34,089][src.dataset.crello_dataset][INFO] - Remove columns: []
+[2025-08-05 22:30:34,092][src.dataset.crello_dataset][INFO] - Don't cluster canvas, current N_cw/N_ch: [38,44]
+[2025-08-05 22:30:34,218][src.dataset.helpers.cluster_store][DEBUG] - Patches cluster grouping: <False>.
+[2025-08-05 22:30:34,218][src.dataset.helpers.cluster_store][INFO] - Cluster store initialized.
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][INFO] - Vocab Size: <3253>
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][DEBUG] - Number of Special Tokens: <6>
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][DEBUG] - Number of Canvas Tokens: <114>
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][DEBUG] - Number of Categories: <5>
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][DEBUG] - Number of Bbox Tokens: <512>
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][DEBUG] - Number of Z-index Tokens: <20>
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][DEBUG] - Number of Image Tokens: <2048>
+[2025-08-05 22:30:34,225][src.dataset.crello_dataset][DEBUG] - Number of Text Tokens: <548>
+[2025-08-05 22:30:34,318][src.dataset.crello_dataset][INFO] - Begin Dataset Initialization...
+[2025-08-05 22:30:34,765][src.dataset.crello_dataset][INFO] - Load cache and filter by bounds [1,20] successfully.
+[2025-08-05 22:30:34,765][src.dataset.crello_dataset][INFO] - Cache path: /home/boris/projects/private/OrderGOL/data/crello/cache/cache_data.pt
+[2025-08-05 22:30:34,765][src.dataset.crello_dataset][INFO] - Dataset Initialization Done(Cache).
+[2025-08-05 22:30:34,829][src.model.layout_transformer][DEBUG] - Current pe_mode: <param>

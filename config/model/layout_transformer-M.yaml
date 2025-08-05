@@ -1,0 +1,11 @@
+_target_: src.model.layout_transformer.LayoutTransformer
+_partial_: true
+# vocab_size: ???
+# block_size: ???
+n_layer: 9
+n_head: 12
+n_embd: 768
+embd_pdrop: 0.1
+resid_pdrop: 0.1
+attn_pdrop: 0.1
+pe_mode: "param"

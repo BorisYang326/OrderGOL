@@ -1,0 +1,4 @@
+_target_: src.dataset.clay_dataset.CLAYDataset
+_partial_: True
+datafile_raw_path: ${data.ext_path}/clay/filter_v3
+max_samples: ???

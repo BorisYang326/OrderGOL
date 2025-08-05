@@ -1,0 +1,12 @@
+_target_: torch.optim.lr_scheduler.SequentialLR
+_partial_: true
+schedulers:
+  - _target_: torch.optim.lr_scheduler.LinearLR
+    _partial_: true
+    start_factor: 0.1
+    total_iters: 500
+  - _target_: torch.optim.lr_scheduler.CosineAnnealingLR
+    _partial_: true
+    T_max: 24500
+    eta_min: 1e-5
+milestones: [500]

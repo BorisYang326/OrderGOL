@@ -1,0 +1,39 @@
+# @package _global_
+defaults:
+  - override /dataset: clay-30k
+data:
+  cache_root: ${data.ext_path}/clay
+  img_cluster_N: 2048
+  bbox_cluster_N: 128
+  font_family_cluster_N: ???
+  font_color_cluster_N: ???
+  ## canvas height/width category defined by crello.
+  canvas_width_cluster_N: 32
+  canvas_height_cluster_N: 32
+  canvas_color_cluster_N: 32
+  N_var_per_element: 7
+  special_tokens: [cav, bos, eos, pad]
+  upper_bound: 20
+  batch_size: 64
+  mix_visual_feat: false
+  patch_transform: reshape
+  num_workers: 16  
+  is_canvas_cluster: true
+  is_visual_only: true
+trainer:
+  log_dir: ./
+  ckpt_dir: ./checkpoints
+  learning_rate: 2.5e-4
+  max_epochs: 100
+  # save_model: true
+  run_mode: train
+  clip_embed_inject: false
+  sampling: top_p
+  visual_balance_factor: 3.0
+scorer:
+  learning_rate: ${trainer.learning_rate}
+  img_backbone_name: vit
+  visual_emb_mode: tok
+debug: false
+hydra.verbose: true
+seed: 40

@@ -1,0 +1,43 @@
+# @package _global_
+defaults:
+  - override /dataset: clay-25kf
+data:
+  cache_root: ${data.ext_path}/clay
+  img_cluster_N: 1024
+  bbox_cluster_N: 128
+  font_family_cluster_N: ???
+  font_color_cluster_N: ???
+  ## canvas height/width category defined by crello.
+  canvas_width_cluster_N: 32
+  canvas_height_cluster_N: 32
+  canvas_color_cluster_N: 32
+  N_var_per_element: 6
+  without_zid: true
+  special_tokens: [cav, bos, eos, pad]
+  upper_bound: 10
+  batch_size: 64
+  mix_visual_feat: false
+  patch_transform: reshape
+  extern_order_map: ./order-pretrain/order_pairs_noinjected.npy
+  order_pretrain_flag: true
+  order_pretrain_cfgs: '+experiment=clay-10kf data.elem_order=neural hydra.job.chdir=True trainer.save_model=true trainer.save_order_interval=10'
+  num_workers: 4  
+  is_canvas_cluster: true
+  is_visual_only: true
+trainer:
+  log_dir: ./
+  ckpt_dir: ./checkpoints
+  learning_rate: 2.5e-4
+  max_epochs: 100
+  # save_model: true
+  run_mode: train
+  clip_embed_inject: false
+  sampling: top_p
+  visual_balance_factor: 3.0
+scorer:
+  learning_rate: ${trainer.learning_rate}
+  img_backbone_name: vit
+  visual_emb_mode: tok
+debug: false
+hydra.verbose: true
+seed: 40

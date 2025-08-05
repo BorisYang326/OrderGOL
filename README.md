@@ -1,9 +1,9 @@
 <div align="center">
-<h1>Order Matters: Learning Element Ordering for Graphic Design Generation (ACM TOG 2025)</h1>
+<h1>Order Matters: Learning Element Ordering for <br> Graphic Design Generation (TOG 2025)</h1>
 
-[Bo Yang](https://borisyang326.github.io/) · [Ying Cao*](https://www.ying-cao.com/)
+[Bo Yang](https://borisyang326.github.io/), [Ying Cao†](https://www.ying-cao.com/)
 
-<sup>*</sup>Corresponding Author
+<sup>†</sup>Corresponding Author
 
 ShanghaiTech University
 
@@ -39,7 +39,12 @@ We propose a **G**enerative **O**rder **L**earner (GOL) that learns optimal elem
 The key insight is that the order in which design elements are generated significantly impacts the quality of the final design. Our neural order outperforms random and raster ordering strategies.
 
 ## ⚙️ Setup
-
+```
+conda env create -f requirements.yml
+conda activate ordergol   
+pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu121
+pip install -r requirements.txt
+```
 ## 📊 Dataset Preparation
 
 ## 🚀 Training

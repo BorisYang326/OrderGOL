@@ -1,0 +1,4 @@
+_target_: src.dataset.clay_dataset.CLAYDataset
+_partial_: True
+datafile_raw_path: ${data.ext_path}/clay/merge
+max_samples: 10000

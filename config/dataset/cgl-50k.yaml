@@ -1,0 +1,4 @@
+_target_: src.dataset.cgl_dataset.CGLDataset
+_partial_: True
+datafile_raw_path: ${data.ext_path}/cgl/merge_v3
+max_samples: 54546
