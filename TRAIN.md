@@ -1,15 +1,21 @@
-# export CUDA_VISIBLE_DEVICES=1
+# 🚀 Training Guide
 
-# Get absolute path of script directory to avoid issues with hydra.job.chdir=true
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-ROOT="$SCRIPT_DIR"
+This guide provides detailed instructions for training the OrderGOL model. The training process consists of three stages:
 
-# you can set the ckpt path manually here
-# CKPT_PATH="$SCRIPT_DIR/ckpt/crello"
-ORDER_PRETRAIN_PATH="$SCRIPT_DIR/data/crello/order_pretrain"
+1. **TRAIN-BASELINE**: Training baseline ordering strategies (random, raster, saliency, layer, lexical)
+2. **JOINT-TRAINING**: Joint training of ordering network and generator
+3. **TRAIN-OURS**: Training generator with learned neural ordering
 
+## 💾 Hardware Requirements
 
-# TRAIN-BASELINE
+- **Single Generator Training**: ~24GB GPU RAM (batch size 256)
+- **Joint Training**: ~48GB GPU RAM (batch size 256)
+
+## 🎯 Training Stages
+
+### Stage 1: Training Generator under Baseline Ordering
+
+```bash
 python main.py --multirun \
     +experiment=crello-10k-corrv3 \
     data.elem_order=random,raster,saliency,layer,lexical \
@@ -25,9 +31,13 @@ python main.py --multirun \
     trainer.wandb_mode=disabled \
     "trainer.exp_name=crello-bs\${data.batch_size}_epochs\${trainer.max_epochs}_5e-5" \
     hydra.sweep.subdir='crello_bs${data.batch_size}_epochs${trainer.max_epochs}-${data.elem_order}'
+```
 
+### Stage 2: Joint Training
 
-# JOINT-TRAINING
+Train the ordering network jointly with the generator:
+
+```bash
 python main.py --multirun \
     +experiment=crello-10k-corrv3 \
     data.elem_order=neural \
@@ -43,9 +53,15 @@ python main.py --multirun \
     trainer.wandb_mode=disabled \
     "trainer.exp_name=crello-bs\${data.batch_size}_epochs\${trainer.max_epochs}_5e-5" \
     hydra.sweep.subdir='crello_bs${data.batch_size}_epochs${trainer.max_epochs}-${data.elem_order}'
+```
+
+### Stage 3: Training Generator under Neural Ordering
 
 
-# TRAIN-OURS
+```bash
+# Set the path to order pretraining data
+ORDER_PRETRAIN_PATH="$(pwd)/data/crello/order_pretrain"
+
 python main.py --multirun \
     +experiment=crello-10k-corrv3-optimized \
     data.elem_order=optimized \
@@ -65,3 +81,6 @@ python main.py --multirun \
     trainer.wandb_mode=disabled \
     "trainer.exp_name=crello-bs\${data.batch_size}_epochs\${trainer.max_epochs}_5e-5" \
     hydra.sweep.subdir='crello_bs${data.batch_size}_epochs${trainer.max_epochs}-${data.elem_order}'
+```
+
+- `order_selected='[48]'` specifies which learned ordering to use

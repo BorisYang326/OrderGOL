@@ -39,41 +39,88 @@ We propose a **G**enerative **O**rder **L**earner (GOL) that learns optimal elem
 The key insight is that the order in which design elements are generated significantly impacts the quality of the final design. Our neural order outperforms random and raster ordering strategies.
 
 ## ⚙️ Setup
-```
+
+### Environment Setup
+```bash
 conda env create -f requirements.yml
 conda activate ordergol   
 pip install torch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 --index-url https://download.pytorch.org/whl/cu121
 pip install -r requirements.txt
 ```
-## 📊 Dataset Preparation
+
+### Dataset Setup
+1. **Download the Crello Dataset**
+   
+   Download [crello.zip](https://drive.google.com/file/d/1YZ2gjCC0QMPdr18oYEe8mv_w5RO_eYDX/view?usp=sharing) from the provided link and place it in your project directory.
+
+2. **Extract Dataset**
+   ```bash
+   unzip crello.zip
+   mv crello data/
+   ```
+   
+   The dataset should be organized as:
+   ```
+   data/
+   └── crello/
+       ├── cache/          # Preprocessed .pt files (auto-generated)
+       ├── weights/        # Clustering information for preprocessing
+       └── ...            # Other dataset files
+   ```
+
+**Note**: The `CrelloDataset` class will prioritize loading preprocessed `.pt` files from `data/cache/`. If these files are not found, it will automatically preprocess the data based on pre-computed clustering information in `data/weights/`.
 
 ## 🚀 Training
 
-## 🎯 Inference
+For detailed training instructions, see [TRAIN.md](TRAIN.md).
+
+## 🎯 Evaluation
+
+For detailed evaluation instructions, see [EVAL.md](EVAL.md).
+
 
 ## 📁 Project Structure
 
-<!-- ```
+```
 OrderGOL/
-├── configs/                 # Configuration files
-├── data/                   # Dataset directory
-├── checkpoints/            # Model checkpoints
-├── src/                    # Source code
-│   ├── models/            # Model implementations
-│   ├── data/              # Data loading and preprocessing
-│   ├── training/          # Training utilities
-│   └── utils/             # Helper functions
-├── scripts/               # Training and evaluation scripts
-├── assets/                # Images and figures
-├── requirements.txt       # Python dependencies
-└── README.md             # This file
-``` -->
+├── configs/               # YAML Configuration files
+├── data/                  # Dataset directory
+├── ckpt/                  # Model checkpoints
+├── src/                   # Source code
+│   ├── model/             # Design Generator implementations
+│   │   ├── design_transformer.py
+│   │   ├── layout_transformer.py
+│   │   ├── codebook.py
+│   │   └── ...
+│   ├── scorer.py          # Ordering Network (main component)
+│   ├── sort.py            # Neural sorting algorithms
+│   ├── dataset/           # Data load, preprocess and rendering
+│   │   ├── crello_dataset.py
+│   │   ├── helpers/
+│   │   └── ...  
+│   ├── fid/               # FID computation (seq/visual embedding space)
+│   │   ├── seq/           # Sequential embeddings
+│   │   └── visual/        # Visual embeddings
+│   ├── configs.py         # Experiment configurations (non-YAML args)
+│   ├── trainer.py         # Training pipeline
+│   ├── sampling.py        # Sampling strategies
+│   ├── metric.py          # Evaluation metrics
+│   ├── preprocess.py      # Data preprocessing utilities
+│   ├── saliency/          # Saliency-related utilities
+│   └── utils.py           # Helper functions
+├── train.sh               # Training script
+├── eval.sh                # Evaluation script  
+├── main.py                # Entry point
+├── assets/                # Repo figures
+├── requirements.txt/yml   # Python dependencies
+└── README.md              # This file
+```
 
 ## ❤️ Acknowledgments
 
 This project is built upon several excellent open-source projects:
-- [LayoutDM](https://github.com/CyberAgentAILab/layout-dm) LayoutDM: Discrete Diffusion Model for Controllable Layout Generation
-- [LayoutTrans](https://github.com/kampta/DeepLayout) LayoutTransformer: Layout Generation and Completion with Self-attention
+- [LayoutDM](https://github.com/CyberAgentAILab/layout-dm): main hydra-based training pipe, diffusion-based design generator.
+- [LayoutTransformer](https://github.com/kampta/DeepLayout): dataset utilities, auto-regressive design generator.
 
 We thank the authors of these projects for their contributions to the open-source community.
 
