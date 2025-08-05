@@ -119,8 +119,8 @@ OrderGOL/
 ## ❤️ Acknowledgments
 
 This project is built upon several excellent open-source projects:
-- [LayoutDM](https://github.com/CyberAgentAILab/layout-dm): main hydra-based training pipe, diffusion-based design generator.
-- [LayoutTransformer](https://github.com/kampta/DeepLayout): dataset utilities, auto-regressive design generator.
+- [LayoutDM](https://github.com/CyberAgentAILab/layout-dm): main hydra-based training pipe, DM-based design generator.
+- [LayoutTransformer](https://github.com/kampta/DeepLayout): dataset utilities, AR-based design generator.
 
 We thank the authors of these projects for their contributions to the open-source community.
 
