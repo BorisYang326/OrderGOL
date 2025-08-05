@@ -20,7 +20,7 @@ ShanghaiTech University
 
 ## 🏷️ Change Log 
 
-- [2025/08/05] 🔥 We release the source code.
+- [2025/08/05] 🔥 We release the source code and checkpoints.
 - [2025/04/30] 🔥 We release the <a href='https://borisyang326.github.io/ordermatters.html'>project page</a>.
 - [2025/04/27] 📄 Paper accepted to ACM Transactions on Graphics (SIGGRAPH 2025).
 
