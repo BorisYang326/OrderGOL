@@ -124,6 +124,10 @@ This project is built upon several excellent open-source projects:
 
 We thank the authors of these projects for their contributions to the open-source community.
 
+## 📭 Contact
+
+If your have any comments or questions, feel free to contact [borisyang326@gmail.com](mailto:borisyang326@gmail.com)
+
 ## 🎓 Citation
 
 If our work helps your research or applications, please consider citing our paper:
