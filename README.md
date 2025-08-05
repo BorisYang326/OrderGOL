@@ -1,5 +1,5 @@
 <div align="center">
-<h1>Order Matters: Learning Element Ordering for Graphic Design Generation (ACM SIGGRAPH 2025)</h1>
+<h1>Order Matters: Learning Element Ordering for Graphic Design Generation (ACM TOG 2025)</h1>
 
 [Bo Yang](https://borisyang326.github.io/) · [Ying Cao*](https://www.ying-cao.com/)
 
